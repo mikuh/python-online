@@ -1,10 +1,6 @@
 <template>
   <div>
-    loginurl：<input type="text" v-model="config.loginurl" style="width: 200px"></input>
-    <button @click="fakelogin">假登录</button>
-
-    <p>配置服务器信息：</p>
-    文件上传url设置：<input type="text" v-model="config.url"></input>
+        <p>配置服务器信息：</p>
     wss 连接设置：host:<input type="text" v-model="config.host"></input>port:<input type="text" v-model="config.port"></input>username:<input type="text" v-model="config.username"></input>password:<input type="text" v-model="config.password"></input>
     <br/><br/>
     <button @click="connect_websocket">保存设置，并连接服务器</button>
@@ -83,12 +79,10 @@
           keyMap: "emacs"
         },
         config: {
-          url: null,
           host: null,
           port: null,
           username: null,
           password: null,
-          loginurl: null,
         },
         term: null,
         terminalSocket: null,
@@ -119,7 +113,7 @@
         this.term = new Terminal()
         this.term.open(terminalContainer)
         // open websocket
-        this.terminalSocket = new WebSocket(`wss://wx.piaoshiyun.com/ws/shell?host=${this.config.host}&port=${this.config.port}&username=${this.config.username}&password=${this.config.password}`)
+        this.terminalSocket = new WebSocket(`wss://${this.config.host}/ws/shell?host=${this.config.host}&port=${this.config.port}&username=${this.config.username}&password=${this.config.password}`)
         this.terminalSocket.onopen = this.runRealTerminal
         this.terminalSocket.onclose = this.closeRealTerminal
         this.terminalSocket.onerror = this.errorRealTerminal
