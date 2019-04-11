@@ -113,7 +113,7 @@
         this.term = new Terminal()
         this.term.open(terminalContainer)
         // open websocket
-        this.terminalSocket = new WebSocket(`wss://${this.config.host}/ws/shell?host=${this.config.host}&port=${this.config.port}&username=${this.config.username}&password=${this.config.password}`)
+        this.terminalSocket = new WebSocket(`ws://127.0.0.1:3000/terminals?host=${this.config.host}&port=${this.config.port}&username=${this.config.username}&password=${this.config.password}`)
         this.terminalSocket.onopen = this.runRealTerminal
         this.terminalSocket.onclose = this.closeRealTerminal
         this.terminalSocket.onerror = this.errorRealTerminal
