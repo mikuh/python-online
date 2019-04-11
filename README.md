@@ -7,7 +7,7 @@
 - 启动服务器 `cd server`,`python aioserver.py`
 
 # 前端启动
-- npm install && npm run serve
+- cd client && npm install && npm run serve
 - 访问: http://localhost:8080/#/
 
 # 效果图
