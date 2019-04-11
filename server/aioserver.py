@@ -41,7 +41,7 @@ async def coding(request):
     password = data['password']
 
     # code 不转义处理
-    code = code.replace('"', '\\"').replace("'", "\\'")
+    code = code.replace('"', '\\"')
 
     ssh_client = paramiko.SSHClient()
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
