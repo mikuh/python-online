@@ -47,7 +47,7 @@ async def coding(request):
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh_client.connect(host, port, user, password)
     sftp_exec_command(ssh_client, f"mkdir -p ~/{code_id}")
-    sftp_exec_command(ssh_client, f"echo -e \"{code}\" > ~/{code_id}/main.py")
+    sftp_exec_command(ssh_client, f"echo \"{code}\" > ~/{code_id}/main.py")
     ssh_client.close()
     return web.json_response(
         {"data": {"ssh_command": f"python ~/{code_id}/main.py"}, "error_code": 0, "msg": "ok"})
