@@ -22,7 +22,7 @@ def start_loop(loop):
 
 def sftp_exec_command(ssh_client, command):
     try:
-        std_in, std_out, std_err = ssh_client.exec_command(command)
+        std_in, std_out, std_err = ssh_client.exec_command(command, timeout=4)
         out = "".join([line for line in std_out])
         return out
     except Exception as e:
